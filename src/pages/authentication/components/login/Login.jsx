@@ -35,7 +35,7 @@ const Login = ({setAuth}) => {
   
           <div  className="login-btn">
             <button type='submit' onClick={loginHandler}>Login</button>
-            <p> Don't have an account ? <a href='/' onClick={setAuth(false)}>Signup</a></p> 
+            <p> Don't have an account ? <a href='#/' onClick={() => setAuth("register")}>Signup</a></p> 
           </div>
 
         </div>

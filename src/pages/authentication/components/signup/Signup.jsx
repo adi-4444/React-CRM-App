@@ -54,7 +54,7 @@ const Signup = ({setAuth}) => {
 
           <div  className="signup-btn">
             <button type='submit' onSubmit={signupHandler}>Signup</button>
-            <p>Already have an account ? <a href='/' onClick={setAuth(true)}>Login</a></p>
+            <p>Already have an account ? <a href='#/' onClick={() => setAuth("login")}>Login</a></p>
           </div>
 
         </div>

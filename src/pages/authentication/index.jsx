@@ -5,18 +5,16 @@ import Signup from './components/signup/Signup';
 
 
 const Authentication = () => {
-   const [auth,setAuth] = useState(true)
+   const [auth,setAuth] = useState("login")
   return (
     <div>
-
-      <div>Authentication Comp</div>
-      {/* {
-        auth === "login" && <Login setAuth={setAuth}/> 
+      {
+        auth === "login" && <Login setAuth={setAuth}/>
       }
       {
-        auth === "signup" && <Signup setAuth={setAuth}/>
-      } */}
-      {auth ? <Login setAuth={setAuth}/> : <Signup setAuth={setAuth}/>}
+        auth !== "login" && <Signup setAuth={setAuth}/>
+      }
+      {/* {auth ? <Login setAuth={setAuth}/> : <Signup setAuth={setAuth}/>} */}
     </div>
   )
 }
