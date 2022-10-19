@@ -1,15 +1,49 @@
-import React, {useState} from 'react'
-import './Login.css'
+import React, {useState} from 'react';
+import { loginUser } from '../../apis/authApi';
+import {useNavigate} from 'react-router-dom';
+import {saveUserInfo} from '../../../../commom/utils/helper'
+import './Login.css';
 
 
 const Login = ({setAuth}) => {
-  const [userid, setUserId] = useState('');
+  const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const loginHandler = (e) => {
     e.preventDefault()
-    console.log({userid,password})
-  }
+    const data = {userId,password}
+    console.log("Loginbtn-",data)
+    try {
+      loginUser(data)
+      .then(res => {
+        console.log("api res - ",res)
+        const {data, status} = res;
+        if (status === 200) {
+          const {userTypes} = data;
+                 saveUserInfo(data)
+           // if success, i will redirect the user to login page
+           if(userTypes === "ENGINEER") {
+              navigate("/engineer");
+           } else if(userTypes === "CUSTOMER") {
+              navigate("/customer");
+           } else {
+            navigate("/admin");
+           }
+        }
+      })
+        .catch(err => {
+          // if failure, i will show an error
+          const errMsg = err?.response?.data?.message || err?.message;
+          console.log(errMsg);
+        })
+      } catch (err) {
+        // if failure, i will show an error
+        const errMsg = err?.response?.data?.message || err?.message;
+        console.log(errMsg);
+      }
+
+  };
 
   return (
     <div className='login-body'>
@@ -21,9 +55,9 @@ const Login = ({setAuth}) => {
         <form onSubmit={loginHandler}>
           <div className="form-group">
             <input type="userid" className='form-control' name='userid *' placeholder="userid" autoFocus required
-            value={userid} onChange={(e)=> setUserId(e.target.value)}
+            value={userId} onChange={(e)=> setUserId(e.target.value)}
             />
-            <label className='form-label'>Email *</label>
+            <label className='form-label'>User ID *</label>
           </div>
 
           <div className="form-group">

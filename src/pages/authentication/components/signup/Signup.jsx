@@ -13,21 +13,15 @@ const Signup = ({setAuth}) => {
   const signupHandler = (e) => {
     e.preventDefault()
     const data = {name,email,userId,userType,password}
-    console.log(data)
-
     // api call to Signup a new user
     try {
       resisterUser(data)
       .then(res => {
         console.log(res)
-        const {status,data} = res;
+        const {status} = res;
         if(status === 201) {
-          const {name,email,userId,userType} = data;
-          localStorage.setItem("name", name);
-          localStorage.setItem("email", email);
-          localStorage.setItem("userId", userId);
-          localStorage.setItem("userType", userType);
           // if success, i will redirect the user to login page
+          alert("User Registration Successfull")
           setAuth("login")
         }
       })
@@ -39,12 +33,6 @@ const Signup = ({setAuth}) => {
       const errMsg = err?.response?.data?.message || err?.message;
       console.log(errMsg)
     }
-    
-
-
-    // if failure, i will show an error
-
-
   }
 
   return (
