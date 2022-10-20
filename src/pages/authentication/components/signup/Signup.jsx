@@ -13,7 +13,8 @@ const Signup = ({setAuth}) => {
   const signupHandler = (e) => {
     e.preventDefault()
     const data = {name,email,userId,userType,password}
-    // api call to Signup a new user
+    console.log(data)
+   // api call to Signup a new user
     try {
       resisterUser(data)
       .then(res => {
@@ -65,6 +66,7 @@ const Signup = ({setAuth}) => {
             <div className='user-type'>
               <label>Select User Type *  </label>
                 <select value={userType} onChange={(e) => SetUserType(e.target.value)} required>
+                    <option value='' selected disabled hidden>Choose</option>
                     <option value='ENGINEER'>Engineer</option>
                     <option value='CUSTOMER'>Customer</option>
                 </select>

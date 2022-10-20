@@ -23,12 +23,14 @@ const Login = ({setAuth}) => {
           const {userTypes} = data;
                  saveUserInfo(data)
            // if success, i will redirect the user to login page
-           if(userTypes === "ENGINEER") {
-              navigate("/engineer");
-           } else if(userTypes === "CUSTOMER") {
-              navigate("/customer");
-           } else {
+           if(userTypes === "CUSTOMER") {
+             navigate("/customer");
+          } else if(userTypes === "ENGINEER") {
+            navigate("/engineer");
+           } else if(userTypes === "ADMIN") {
             navigate("/admin");
+           } else {
+            navigate("/")
            }
         }
       })
@@ -42,7 +44,6 @@ const Login = ({setAuth}) => {
         const errMsg = err?.response?.data?.message || err?.message;
         console.log(errMsg);
       }
-
   };
 
   return (
