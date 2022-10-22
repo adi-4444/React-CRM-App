@@ -1,0 +1,15 @@
+.maindiv {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+.button {
+   padding: 10px 15px;
+   border-radius: 8px;
+   border-color: none;
+   border: none;
+   color: white;
+   background-color: red;
+   cursor: pointer;
+}
