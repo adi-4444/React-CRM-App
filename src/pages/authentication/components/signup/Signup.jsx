@@ -1,19 +1,22 @@
 import React,{ useState } from 'react'
 import './Signup.css'
 import {resisterUser} from '../../apis/authApi'
+import Loader from '../../../../commom/components/loader/Loader'
+import { USER_TYPES } from '../../../../commom/constants/userTypes'
 
 const Signup = ({setAuth}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [userId, setUserId] = useState('');
-  const [userType, SetUserType] = useState('');
+  const [userType, SetUserType] = useState(USER_TYPES.CUSTOMER);
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const signupHandler = (e) => {
     e.preventDefault()
     const data = {name,email,userId,userType,password}
-    console.log(data)
+    setLoading(true)
    // api call to Signup a new user
     try {
       resisterUser(data)
@@ -22,21 +25,26 @@ const Signup = ({setAuth}) => {
         const {status} = res;
         if(status === 201) {
           // if success, i will redirect the user to login page
+          setLoading(false);
           alert("User Registration Successfull")
           setAuth("login")
         }
       })
       .catch(err => {
         const errMsg = err?.response?.data?.message || err?.message;
-        console.log(errMsg)
+        console.log(errMsg);
+        setLoading(false);
       })
     } catch (err) {
       const errMsg = err?.response?.data?.message || err?.message;
-      console.log(errMsg)
+      console.log(errMsg);
+      setLoading(false);
     }
   }
 
   return (
+  <>
+  {loading ? <Loader /> : ( 
     <div className='signup-body'>
       <div className="signup-wrapper">
 
@@ -102,6 +110,8 @@ const Signup = ({setAuth}) => {
 
       </div>
     </div>
+    )}
+  </>
   )
 }
 

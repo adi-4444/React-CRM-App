@@ -3,31 +3,33 @@ import { loginUser } from '../../apis/authApi';
 import {useNavigate} from 'react-router-dom';
 import {saveUserInfo} from '../../../../commom/utils/helper'
 import './Login.css';
-
+import Loader from '../../../../commom/components/loader/Loader'
+import { USER_TYPES } from '../../../../commom/constants/userTypes';
 
 const Login = ({setAuth}) => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const loginHandler = (e) => {
     e.preventDefault()
     const data = {userId,password}
-    console.log("Loginbtn-",data)
+    setLoading(true)
     try {
       loginUser(data)
       .then(res => {
-        console.log("api res - ",res)
         const {data, status} = res;
         if (status === 200) {
           const {userTypes} = data;
                  saveUserInfo(data)
+                 setLoading(false);
            // if success, i will redirect the user to login page
-           if(userTypes === "CUSTOMER") {
+           if(userTypes === USER_TYPES.CUSTOMER) {
              navigate("/customer");
-          } else if(userTypes === "ENGINEER") {
+          } else if(userTypes === USER_TYPES.ENGINEER) {
             navigate("/engineer");
-           } else if(userTypes === "ADMIN") {
+           } else if(userTypes === USER_TYPES.ADMIN) {
             navigate("/admin");
            } else {
             navigate("/")
@@ -38,15 +40,19 @@ const Login = ({setAuth}) => {
           // if failure, i will show an error
           const errMsg = err?.response?.data?.message || err?.message;
           console.log(errMsg);
+          setLoading(false);
         })
       } catch (err) {
         // if failure, i will show an error
         const errMsg = err?.response?.data?.message || err?.message;
         console.log(errMsg);
+        setLoading(false);
       }
   };
 
   return (
+    <>
+    { loading ? <Loader /> : (
     <div className='login-body'>
         <h1>Welcome</h1>
       <div className="login-wrapper">
@@ -77,6 +83,8 @@ const Login = ({setAuth}) => {
 
       </div>
     </div>
+    )}
+    </>
   )
 }
 
