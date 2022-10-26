@@ -19,17 +19,15 @@ function App() {
           <Route element={<VerifyAuth allowedRoles={[USER_TYPES.CUSTOMER]} />} >
             <Route path='/customer' element={<Customer />}/>
           </Route>
+
           <Route element={<VerifyAuth allowedRoles={[USER_TYPES.ENGINEER]} />} >
             <Route path='/engineer' element={<Engineer />}/>
           </Route>
+
           <Route element={<VerifyAuth allowedRoles={[USER_TYPES.ADMIN]} />} >
             <Route path='/admin' element={<Admin />}/>
           </Route>
 
-          {/* <Route path='/customer' element={<Customer />}/>
-          <Route path='/engineer' element={<Engineer />}/>
-          <Route path='/admin' element={<Admin />}/> */}
-          
         <Route path='/unauthorized' element={<Unauthorized/>}/>
         <Route path='*' element={<Notfound />} />
       </Routes>

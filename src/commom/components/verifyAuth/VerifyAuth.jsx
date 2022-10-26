@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const VerifyAuth = props => {
     const { allowedRoles } = props;
-    const currentUserType = localStorage.getItem("userTypes");
+    const currentUserType = localStorage.getItem("userType");
 
 
     if (allowedRoles.includes(currentUserType)) {

@@ -8,6 +8,9 @@ import {USER_TYPES} from '../../commom/constants/userTypes'
 
 
 const Authentication = () => {
+
+
+
    const [auth,setAuth] = useState("login");
    const navigate = useNavigate()
 
@@ -30,13 +33,15 @@ const Authentication = () => {
    
   return (
     <div>
+
       {
         auth === "login" && <Login setAuth={setAuth}/>
       }
       {
         auth !== "login" && <Signup setAuth={setAuth}/>
       }
-      {/* {auth ? <Login setAuth={setAuth}/> : <Signup setAuth={setAuth}/>} */}
+
+
     </div>
   )
 }
