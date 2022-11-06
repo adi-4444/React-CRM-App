@@ -1,11 +1,17 @@
 .sidebar-container {
 	background-color: rgb(153, 149, 149);
-	flex: 1;
-}
-/* .sidebar-content {
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 3rem;
 	padding-top: 25px;
-} */
+}
+.sidebar-content {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.sidebar-content > p > a {
+	text-decoration: none;
+}

@@ -1,17 +1,18 @@
 import React from "react";
 import "./Content.css";
-
-const Content = () => {
+import { Route } from "react-router-dom";
+import Dashboard from "./components/dashboard/Dashboard";
+import Tickets from "./components/tickets/Tickets";
+import Users from "./components/users/Users";
+const Content = ({ adminstate }) => {
+	console.log(adminstate);
 	return (
 		<div>
 			<div className='content-div'>
-				<h1>Dashborad</h1>
-				{/* <div className='ticket-status'>
-					<div>Tickets Open</div>
-					<div>Tickets Progress</div>
-					<div>Tickets Closed</div>
-					<div>Tickets Blocked</div>
-				</div> */}
+				<h1>Content</h1>
+				{adminstate.dashboard === true && <Dashboard />}
+				{adminstate.tickets === true && <Tickets />}
+				{adminstate.users === true && <Users />}
 			</div>
 		</div>
 	);

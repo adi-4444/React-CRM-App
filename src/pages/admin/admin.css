@@ -2,9 +2,6 @@
 	margin: 0px;
 }
 .admin-page {
-	display: flex;
-}
-.sidebar-div {
-}
-.content-div {
+	display: grid;
+	grid-template-columns: 1fr 5.5fr;
 }
