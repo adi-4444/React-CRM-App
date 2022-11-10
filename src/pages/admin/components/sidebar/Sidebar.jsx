@@ -1,6 +1,6 @@
 import React from "react";
 import "./Sidebar.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Sidebar = ({ setAdminState }) => {
 	const navigate = useNavigate();
@@ -8,15 +8,15 @@ const Sidebar = ({ setAdminState }) => {
 		localStorage.clear();
 		navigate("/");
 	};
-	const setAdminStateToDashboard = () => {
-		setAdminState({ dashboard: true, tickets: false, users: false });
-	};
-	const setAdminStateToTickets = () => {
-		setAdminState({ dashboard: false, tickets: true, users: false });
-	};
-	const setAdminStateToUsers = () => {
-		setAdminState({ dashboard: false, tickets: false, users: true });
-	};
+	// const setAdminStateToDashboard = () => {
+	// 	setAdminState({ dashboard: true, tickets: false, users: false });
+	// };
+	// const setAdminStateToTickets = () => {
+	// 	setAdminState({ dashboard: false, tickets: true, users: false });
+	// };
+	// const setAdminStateToUsers = () => {
+	// 	setAdminState({ dashboard: false, tickets: false, users: true });
+	// };
 	return (
 		<div>
 			<div className='sidebar-container'>
@@ -25,19 +25,13 @@ const Sidebar = ({ setAdminState }) => {
 				</div>
 				<div className='sidebar-content'>
 					<p>
-						<a href='#/' onClick={setAdminStateToDashboard}>
-							Dashboard
-						</a>
+						<NavLink to='/admin'>Dashboard</NavLink>
 					</p>
 					<p>
-						<a href='#/' onClick={setAdminStateToTickets}>
-							Tickets
-						</a>
+						<NavLink to='/admin/tickets'>Tickets</NavLink>
 					</p>
 					<p>
-						<a href='#/' onClick={setAdminStateToUsers}>
-							Users
-						</a>
+						<NavLink to='/admin/users'>Users</NavLink>
 					</p>
 					<p>
 						<a href='#/' onClick={logout}>

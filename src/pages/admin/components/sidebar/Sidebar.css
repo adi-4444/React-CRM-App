@@ -15,3 +15,9 @@
 .sidebar-content > p > a {
 	text-decoration: none;
 }
+.active {
+	background-color: black;
+	color: #fff;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+}

@@ -1,16 +1,11 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import "./Content.css";
-import Dashboard from "./components/dashboard/Dashboard";
-import Tickets from "./components/tickets/Tickets";
-import Users from "./components/users/Users";
-
-const Content = ({ adminstate }) => {
+const Content = () => {
 	return (
 		<div>
 			<div className='content-div'>
-				{adminstate.dashboard === true && <Dashboard />}
-				{adminstate.tickets === true && <Tickets />}
-				{adminstate.users === true && <Users />}
+				<Outlet />
 			</div>
 		</div>
 	);

@@ -8,6 +8,9 @@ import Unauthorized from './pages/warning/Unauthorized403';
 import Notfound from './pages/warning/Notfound404'
 import VerifyAuth from './commom/components/verifyAuth/VerifyAuth'
 import { USER_TYPES } from './commom/constants/userTypes'
+import Dashboard from './pages/admin/components/content/components/dashboard/Dashboard';
+import Tickets from './pages/admin/components/content/components/tickets/Tickets';
+import Users from './pages/admin/components/content/components/users/Users';
 function App() {
   return (
     <div className="App">
@@ -23,7 +26,13 @@ function App() {
         </Route>
 
         <Route element={<VerifyAuth allowedRoles={[USER_TYPES.ADMIN]} />} >
-          <Route path='/admin' element={<Admin />} />
+
+          <Route path='/admin' element={<Admin />}>
+            <Route index element={<Dashboard />} />
+            <Route path='tickets' element={<Tickets />} />
+            <Route path='users' element={<Users />} />
+          </Route>
+
         </Route>
         <Route path='/unauthorized' element={<Unauthorized />} />
         <Route path='*' element={<Notfound />} />

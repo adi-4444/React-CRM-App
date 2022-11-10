@@ -4,16 +4,16 @@ import Sidebar from "./components/sidebar/Sidebar";
 import "./admin.css";
 
 const Admin = () => {
-	const [adminstate, setAdminState] = useState({
-		dashboard: true,
-		tickets: false,
-		users: false,
-	});
+	// const [adminstate, setAdminState] = useState({
+	// 	dashboard: true,
+	// 	tickets: false,
+	// 	users: false,
+	// });
 	return (
 		<div>
 			<div className='admin-page'>
-				<Sidebar setAdminState={setAdminState} />
-				<Content adminstate={adminstate} />
+				<Sidebar />
+				<Content />
 			</div>
 		</div>
 	);
