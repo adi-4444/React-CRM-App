@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Content from "./components/content/Content";
 import Sidebar from "./components/sidebar/Sidebar";
 import "./admin.css";
+import { USER_TYPES } from "../../commom/constants/userTypes";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
-	// const [adminstate, setAdminState] = useState({
-	// 	dashboard: true,
-	// 	tickets: false,
-	// 	users: false,
-	// });
+	const navigate = useNavigate();
+	useEffect(() => {
+		checkPath();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+	const checkPath = () => {
+		const user = localStorage.getItem("userType");
+		if (user === USER_TYPES.ADMIN) {
+			navigate("/admin/dashboard");
+		}
+	};
 	return (
 		<div>
 			<div className='admin-page'>

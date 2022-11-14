@@ -25,7 +25,7 @@ const Sidebar = ({ setAdminState }) => {
 				</div>
 				<div className='sidebar-content'>
 					<p>
-						<NavLink to='/admin'>Dashboard</NavLink>
+						<NavLink to='/admin/dashboard'>Dashboard</NavLink>
 					</p>
 					<p>
 						<NavLink to='/admin/tickets'>Tickets</NavLink>

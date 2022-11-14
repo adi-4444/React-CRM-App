@@ -16,13 +16,10 @@ const Authentication = () => {
 			const userType = localStorage.getItem("userType");
 			if (userType === USER_TYPES.ENGINEER) {
 				navigate("/engineer");
-				// window.location.href = "/engineer";
 			} else if (userType === USER_TYPES.CUSTOMER) {
 				navigate("/customer");
-				// window.location.href = "/customer";
 			} else {
-				navigate("/admin");
-				// window.location.href = "/admin";
+				navigate("/admin/dashboard");
 			}
 		}
 	}, [navigate]);

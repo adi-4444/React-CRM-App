@@ -28,7 +28,7 @@ function App() {
         <Route element={<VerifyAuth allowedRoles={[USER_TYPES.ADMIN]} />} >
 
           <Route path='/admin' element={<Admin />}>
-            <Route index element={<Dashboard />} />
+            <Route path='dashboard' element={<Dashboard />} />
             <Route path='tickets' element={<Tickets />} />
             <Route path='users' element={<Users />} />
           </Route>
