@@ -2,43 +2,35 @@ import React from "react";
 import MaterialTable from "@material-table/core";
 const UserTable = (props) => {
 	const { usersData, setSelectedUserDetails } = props;
+	const columns = [
+		{ title: "Email", field: "email" },
+		{ title: "Name", field: "name" },
+		{ title: "User ID", field: "userId" },
+		{
+			title: "STATUS",
+			field: "userStatus",
+			lookup: {
+				PENDING: "PENDING",
+				APPROVED: "APPROVED",
+				REJECTED: "REJECTED",
+			},
+		},
+		{
+			title: "USER TYPE",
+			field: "userTypes",
+			lookup: {
+				ADMIN: "ADMIN",
+				CUSTOMER: "CUSTOMER",
+				ENGINEER: "ENGINEER",
+			},
+		},
+	];
 	return (
 		<div>
 			<h1>Users Data</h1>
 			<MaterialTable
 				data={usersData}
-				columns={[
-					{
-						title: "Email",
-						field: "email",
-					},
-					{
-						title: "Name",
-						field: "name",
-					},
-					{
-						title: "User ID",
-						field: "userId",
-					},
-					{
-						title: "STATUS",
-						field: "userStatus",
-						lookup: {
-							PENDING: "PENDING",
-							APPROVED: "APPROVED",
-							REJECTED: "REJECTED",
-						},
-					},
-					{
-						title: "USER TYPE",
-						field: "userTypes",
-						lookup: {
-							ADMIN: "ADMIN",
-							CUSTOMER: "CUSTOMER",
-							ENGINEER: "ENGINEER",
-						},
-					},
-				]}
+				columns={columns}
 				options={{
 					filtering: true,
 					sorting: true,
