@@ -1,0 +1,36 @@
+.ticketstable-wrapper {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 5px;
+	padding: 5px;
+	height: 150px;
+}
+.product-badge {
+	border-radius: 2px;
+	padding: 0.25em 0.5rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.3px;
+	width: 100px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.product-badge.status-closed {
+	background: #c8e6c9;
+	color: #256029;
+}
+.product-badge.status-open {
+	background-color: #b3e5fc;
+	color: #23547b;
+}
+.product-badge.status-in_progress {
+	background-color: #ffd8b2;
+	color: #805b36;
+}
+.product-badge.status-blocked {
+	background: #ffcdd2;
+	color: #c63737;
+}

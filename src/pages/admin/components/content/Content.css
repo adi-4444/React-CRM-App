@@ -1,4 +1,25 @@
 .main-wrapper {
 	background-color: rgb(230, 163, 163);
 	height: 100vh;
+	overflow-y: auto;
+}
+/* width */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #b8b6b6;
+	border-radius: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(255, 255, 255);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }

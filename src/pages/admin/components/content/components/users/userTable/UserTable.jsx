@@ -46,14 +46,14 @@ const UserTable = (props) => {
 		sorting: true,
 		search: true,
 		paging: true,
-		pageSizeOptions: [6],
+		pageSizeOptions: [5, 10, 20],
 		paginationSize: 3,
 		paginationType: "stepped",
 		headerStyle: {
 			backgroundColor: "#c8e6c9",
 			color: "#256029",
 			align: "center",
-			paddingLeft: "5px",
+			paddingLeft: "40px",
 			textAlign: "center",
 		},
 		rowStyle: {

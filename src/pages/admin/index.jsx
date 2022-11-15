@@ -8,15 +8,13 @@ import { useNavigate } from "react-router-dom";
 const Admin = () => {
 	const navigate = useNavigate();
 	useEffect(() => {
-		checkPath();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-	const checkPath = () => {
 		const user = localStorage.getItem("userType");
 		if (user === USER_TYPES.ADMIN) {
 			navigate("/admin/dashboard");
 		}
-	};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<div>
 			<div className='admin-page'>
