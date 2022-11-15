@@ -1,0 +1,31 @@
+.matrialTable-wrapper {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 5px;
+	padding: 5px;
+}
+.product-badge {
+	border-radius: 2px;
+	padding: 0.25em 0.5rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.3px;
+	width: 100px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.product-badge.status-approved {
+	background: #c8e6c9;
+	color: #256029;
+}
+.product-badge.status-pending {
+	background: #feedaf;
+	color: #8a5340;
+}
+.product-badge.status-rejected {
+	background: #ffcdd2;
+	color: #c63737;
+}

@@ -11,6 +11,11 @@ import { USER_TYPES } from './commom/constants/userTypes'
 import Dashboard from './pages/admin/components/content/components/dashboard/Dashboard';
 import Tickets from './pages/admin/components/content/components/tickets/Tickets';
 import Users from './pages/admin/components/content/components/users/Users';
+
+import '@coreui/coreui/dist/css/coreui.min.css'
+// import '@coreui/coreui/dist/js/coreui.min.js'
+import 'react-circular-progressbar/dist/styles.css';
+
 function App() {
   return (
     <div className="App">

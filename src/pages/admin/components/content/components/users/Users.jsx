@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Users.css";
-import UserTable from "./UserTable";
+import UserTable from "./userTable/UserTable";
 import { fetchUsers } from "../../../../apis/users";
+import UserModel from "./userModel/UserModel";
 
 const Users = () => {
 	const [usersData, setUsersData] = useState([]);
 	const [selectedUserDetails, setSelectedUserDetails] = useState({});
+	const [userModel, setUserModel] = useState(false);
 	useEffect(() => {
 		getUsers();
 	}, []);
@@ -25,14 +27,24 @@ const Users = () => {
 			console.log(error);
 		}
 	};
-	console.log(usersData);
-	console.log(selectedUserDetails);
+	const hiseUserModel = () => {
+		setUserModel(false);
+	};
+	const showUserModel = () => {
+		setUserModel(true);
+	};
 	return (
 		<div>
-			<h1>Users</h1>
+			<h4>You can make changes for users</h4>
 			<UserTable
 				usersData={usersData}
 				setSelectedUserDetails={setSelectedUserDetails}
+				showUserModel={showUserModel}
+			/>
+			<UserModel
+				userModel={userModel}
+				hiseUserModel={hiseUserModel}
+				selectedUserDetails={selectedUserDetails}
 			/>
 		</div>
 	);

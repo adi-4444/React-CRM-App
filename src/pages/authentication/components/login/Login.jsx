@@ -55,16 +55,16 @@ const Login = ({ setAuth }) => {
 			{loading ? (
 				<Loader />
 			) : (
-				<div className='login-body'>
+				<div className='login_body'>
 					<h1>Welcome</h1>
-					<div className='login-wrapper'>
-						<div className='login-form-group'>
+					<div className='login_wrapper'>
+						<div className='login_form_group'>
 							<h2>Login</h2>
 							<form onSubmit={loginHandler}>
-								<div className='form-group'>
+								<div className='form_group'>
 									<input
 										type='userid'
-										className='form-control'
+										className='form_control'
 										name='userid *'
 										placeholder='userid'
 										autoFocus
@@ -74,15 +74,15 @@ const Login = ({ setAuth }) => {
 											setUserId(e.target.value)
 										}
 									/>
-									<label className='form-label'>
+									<label className='form_label'>
 										User ID *
 									</label>
 								</div>
 
-								<div className='form-group'>
+								<div className='form_group'>
 									<input
 										type='password'
-										className='form-control'
+										className='form_control'
 										name='password'
 										placeholder='Password'
 										required
@@ -91,12 +91,12 @@ const Login = ({ setAuth }) => {
 											setPassword(e.target.value)
 										}
 									/>
-									<label className='form-label'>
+									<label className='form_label'>
 										Password *
 									</label>
 								</div>
 
-								<div className='login-btn'>
+								<div className='login_btn'>
 									<input type='submit' value='Login' />
 									<p>
 										{" "}
