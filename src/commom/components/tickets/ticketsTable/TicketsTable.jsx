@@ -4,7 +4,7 @@ import MaterialTable from "@material-table/core";
 import { ExportCsv, ExportPdf } from "@material-table/exporters";
 
 const TicketsTable = (props) => {
-	const { ticketsData } = props;
+	const { ticketsData, setSelectedTicketDetails, showTicketModel } = props;
 	const coloumn = [
 		{ title: "ID", field: "id" },
 		{ title: "TITLE", field: "title" },
@@ -72,6 +72,8 @@ const TicketsTable = (props) => {
 					title={"Tickets Records"}
 					onRowClick={(event, rowData) => {
 						console.log({ ...rowData });
+						showTicketModel(true);
+						setSelectedTicketDetails(rowData);
 					}}
 				/>
 			</div>
