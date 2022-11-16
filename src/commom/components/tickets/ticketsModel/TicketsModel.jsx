@@ -1,5 +1,5 @@
 import React from "react";
-import "./usermodel.css";
+import "./ticketsmodel.css";
 import {
 	CModal,
 	CModalBody,
@@ -8,24 +8,24 @@ import {
 	CModalFooter,
 	CButton,
 } from "@coreui/react";
-import { USER_TYPES } from "../../../../../../../commom/constants/userTypes";
 
-const UserModel = (props) => {
+const TicketsModel = (props) => {
 	const {
-		userModel,
-		hideUserModel,
-		selectedUserDetails,
-		selectedUserChange,
-		userUpdate,
-		userModelError,
+		ticketModel,
+		hiseTicketModel,
+		selectedTicketDetails,
+		selectedTicketChange,
+		ticketUpdate,
+		ticketModelError,
 	} = props;
-	const { name, email, userId, userTypes, userStatus } = selectedUserDetails;
+	const { id, title, discription, reporter, assignee, priority, status } =
+		selectedTicketDetails;
 	return (
 		<div>
 			<div className='modal-wrapper'>
 				<CModal
 					alignment='center'
-					onClose={hideUserModel}
+					onClose={hiseUserModel}
 					visible={userModel}
 					backdrop='static'
 				>
@@ -124,7 +124,7 @@ const UserModel = (props) => {
 							)}
 						</CModalBody>
 						<CModalFooter>
-							<CButton color='secondary' onClick={hideUserModel}>
+							<CButton color='secondary' onClick={hiseUserModel}>
 								Close
 							</CButton>
 							<CButton type='submit' color='info'>
@@ -138,4 +138,4 @@ const UserModel = (props) => {
 	);
 };
 
-export default UserModel;
+export default TicketsModel;

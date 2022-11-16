@@ -28,7 +28,7 @@ const Users = () => {
 			console.log(error);
 		}
 	};
-	const hiseUserModel = () => {
+	const hideUserModel = () => {
 		setUserModel(false);
 		setSelectedUserDetails({});
 	};
@@ -60,7 +60,7 @@ const Users = () => {
 				.then((res) => {
 					const { status } = res;
 					if (status === 200) {
-						hiseUserModel();
+						hideUserModel();
 						getUsers();
 					}
 				})
@@ -75,7 +75,7 @@ const Users = () => {
 	};
 	return (
 		<div>
-			<h4>You can make changes for users</h4>
+			<h4 className='users-heading'>You can make changes for users</h4>
 			<UserTable
 				usersData={usersData}
 				setSelectedUserDetails={setSelectedUserDetails}
@@ -84,7 +84,7 @@ const Users = () => {
 			{userModel && (
 				<UserModel
 					userModel={userModel}
-					hiseUserModel={hiseUserModel}
+					hideUserModel={hideUserModel}
 					selectedUserDetails={selectedUserDetails}
 					selectedUserChange={selectedUserChange}
 					userUpdate={userUpdate}
