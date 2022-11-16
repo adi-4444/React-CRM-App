@@ -1,31 +1,34 @@
 import React from "react";
 import "./Sidebar.css";
 import { useNavigate, NavLink } from "react-router-dom";
-
-const Sidebar = ({ setAdminState }) => {
+import {
+	CSidebar,
+	CSidebarNav,
+	CNavTitle,
+	CNavItem,
+	CSidebarBrand,
+} from "@coreui/react";
+import { MdDashboard } from "react-icons/md";
+import { HiUsers } from "react-icons/hi";
+import { ImTicket } from "react-icons/im";
+import { GrCloudlinux } from "react-icons/gr";
+import { FiLogOut } from "react-icons/fi";
+const Sidebar = () => {
 	const navigate = useNavigate();
 	const logout = () => {
 		localStorage.clear();
 		navigate("/");
 	};
-	// const setAdminStateToDashboard = () => {
-	// 	setAdminState({ dashboard: true, tickets: false, users: false });
-	// };
-	// const setAdminStateToTickets = () => {
-	// 	setAdminState({ dashboard: false, tickets: true, users: false });
-	// };
-	// const setAdminStateToUsers = () => {
-	// 	setAdminState({ dashboard: false, tickets: false, users: true });
-	// };
+
 	return (
 		<div>
-			<div className='sidebar-container'>
+			{/* <div className='sidebar-container'>
 				<div className='sidebar-heading'>
 					<h2>CRM APP</h2>
 				</div>
 				<div className='sidebar-content'>
 					<p>
-						<NavLink to='/admin/dashboard'>Dashboard</NavLink>
+						Dashboard</NavLink>
 					</p>
 					<p>
 						<NavLink to='/admin/tickets'>Tickets</NavLink>
@@ -39,7 +42,50 @@ const Sidebar = ({ setAdminState }) => {
 						</a>
 					</p>
 				</div>
-			</div>
+			</div> */}
+			<CSidebar unfoldable className='vh-100 sidebar-wrapper'>
+				<CSidebarNav>
+					<CSidebarBrand>
+						<div className='d-flex align-items-center flex-md-column'>
+							<GrCloudlinux className='iconsize m-2 ms-2.5' />
+							<span>
+								<h4 className='mx-3 my-1 mb-3'>CRM</h4>
+							</span>
+						</div>
+					</CSidebarBrand>
+					<CNavTitle>All Problems Solution</CNavTitle>
+					<CNavItem href='#'>
+						<NavLink to='/admin/dashboard'>
+							<i>
+								<MdDashboard className='text-white iconsize' />
+							</i>
+							<span className='item-text mx-4'>Dashboard</span>
+						</NavLink>
+					</CNavItem>
+					<CNavItem href='#'>
+						<NavLink to='/admin/tickets'>
+							<i>
+								<ImTicket className='text-white iconsize' />
+							</i>
+							<span className='item-text mx-4'>Tickets</span>
+						</NavLink>
+					</CNavItem>
+					<CNavItem href='#'>
+						<NavLink to='/admin/users'>
+							<i>
+								<HiUsers className='text-white iconsize' />
+							</i>
+							<span className='item-text mx-4'>Users</span>
+						</NavLink>
+					</CNavItem>
+					<CNavItem href='#' onClick={logout}>
+						<i>
+							<FiLogOut className='text-white iconsize' />
+						</i>
+						<span className=' item-text mx-4'>Logout</span>
+					</CNavItem>
+				</CSidebarNav>
+			</CSidebar>
 		</div>
 	);
 };

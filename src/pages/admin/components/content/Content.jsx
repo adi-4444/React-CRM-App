@@ -7,7 +7,7 @@ const Content = () => {
 
 	return (
 		<div className='main-wrapper'>
-			<h2>Hi , {userName}</h2>
+			<h2 className='heading-text'>Hi , {userName}</h2>
 			<div className='content-div'>
 				<Outlet />
 			</div>

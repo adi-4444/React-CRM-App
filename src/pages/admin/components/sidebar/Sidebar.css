@@ -1,4 +1,4 @@
-.sidebar-container {
+/* .sidebar-container {
 	background-color: rgb(153, 149, 149);
 	height: 100vh;
 	display: flex;
@@ -20,4 +20,14 @@
 	color: #fff;
 	text-decoration: none;
 	transition: all 0.3s ease-in-out;
+} */
+
+.iconsize {
+	font-size: 2.5rem;
+}
+.item-text {
+	color: #e4e6e9;
+}
+a {
+	text-decoration: none;
 }

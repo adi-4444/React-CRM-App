@@ -1,25 +1,33 @@
 .main-wrapper {
-	background-color: rgb(230, 163, 163);
+	background-color: #f6f7f9;
 	height: 100vh;
 	overflow-y: auto;
 }
-/* width */
+.heading-text {
+	text-align: center;
+	padding-left: 100px;
+	margin-bottom: -2px;
+}
+.content-div {
+	text-align: center;
+
+	padding-left: 100px;
+	padding-right: 40px;
+}
+
 ::-webkit-scrollbar {
 	width: 6px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
 	background: #b8b6b6;
 	border-radius: 50px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
 	background: rgb(255, 255, 255);
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
