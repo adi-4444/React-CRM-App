@@ -98,6 +98,7 @@ const Tickets = () => {
 				ticketModel={ticketModel}
 				hideTicketModel={hideTicketModel}
 				setSelectedTicketDetails={setSelectedTicketDetails}
+				selectedTicketDetails={selectedTicketDetails}
 				selectedTicketChange={selectedTicketChange}
 				ticketUpdate={ticketUpdate}
 				ticketModelError={ticketModelError}

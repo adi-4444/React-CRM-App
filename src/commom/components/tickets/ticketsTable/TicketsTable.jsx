@@ -71,7 +71,6 @@ const TicketsTable = (props) => {
 					options={options}
 					title={"Tickets Records"}
 					onRowClick={(event, rowData) => {
-						console.log({ ...rowData });
 						showTicketModel(true);
 						setSelectedTicketDetails(rowData);
 					}}
