@@ -19,14 +19,13 @@ const TicketsModel = (props) => {
 		ticketUpdate,
 		ticketModelError,
 	} = props;
-	// const {
-	// 	id = "",
-	// 	title = "",
-	// 	status = "",
-	// 	ticketPriority = "",
-	// 	assignee = "",
-	// 	description = "",
-	// } = selectedTicketDetails;
+	const {
+		title = "",
+		status = "",
+		ticketPriority = "",
+		assignee = "",
+		description = "",
+	} = selectedTicketDetails;
 
 	return (
 		<div>
@@ -42,7 +41,7 @@ const TicketsModel = (props) => {
 					</CModalHeader>
 					<form onSubmit={ticketUpdate}>
 						<CModalBody>
-							{/*<div className='form-container my-3 mx-2'>
+							<div className='form-container my-3 mx-2'>
 								<label htmlFor='title' className='d-flex'>
 									<span>Title: </span>
 									<input
@@ -55,7 +54,7 @@ const TicketsModel = (props) => {
 									/>
 								</label>
 							</div>
-							 <div className='form-container my-3 mx-2'>
+							<div className='form-container my-3 mx-2'>
 								<label htmlFor='description' className='d-flex'>
 									<span>Desciption: </span>
 									<textarea
@@ -122,7 +121,7 @@ const TicketsModel = (props) => {
 										</option>
 									</select>
 								</label>
-							</div> */}
+							</div>
 							{ticketModelError && (
 								<div className='my-2 text-danger mx-2'>
 									{ticketModelError}
