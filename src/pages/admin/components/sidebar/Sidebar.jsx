@@ -22,27 +22,6 @@ const Sidebar = () => {
 
 	return (
 		<div>
-			{/* <div className='sidebar-container'>
-				<div className='sidebar-heading'>
-					<h2>CRM APP</h2>
-				</div>
-				<div className='sidebar-content'>
-					<p>
-						Dashboard</NavLink>
-					</p>
-					<p>
-						<NavLink to='/admin/tickets'>Tickets</NavLink>
-					</p>
-					<p>
-						<NavLink to='/admin/users'>Users</NavLink>
-					</p>
-					<p>
-						<a href='#/' onClick={logout}>
-							Log Out
-						</a>
-					</p>
-				</div>
-			</div> */}
 			<CSidebar unfoldable className='vh-100 sidebar-wrapper'>
 				<CSidebarNav>
 					<CSidebarBrand>

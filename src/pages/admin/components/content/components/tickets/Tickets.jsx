@@ -40,7 +40,6 @@ const Tickets = () => {
 		setSelectedTicketDetails({});
 		setTicketModelError("");
 	};
-
 	const selectedTicketChange = (e) => {
 		const currentData = { ...selectedTicketDetails };
 		if (e.target.name === "title") {
@@ -65,9 +64,8 @@ const Tickets = () => {
 			status: selectedTicketDetails.status,
 			assignee: selectedTicketDetails.assignee,
 		};
-
 		try {
-			updateTicket(data, selectedTicketChange.id)
+			updateTicket(data, selectedTicketDetails.id)
 				.then((res) => {
 					const { status } = res;
 					if (status === 200) {
