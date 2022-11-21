@@ -75,7 +75,7 @@ const UserTable = (props) => {
 
 	return (
 		<div>
-			<div className='matrialTable-wrapper'>
+			<div className='matrialTable-wrapper shadow-lg'>
 				<MaterialTable
 					data={usersData}
 					columns={columns}

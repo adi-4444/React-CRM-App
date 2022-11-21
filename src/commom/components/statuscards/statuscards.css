@@ -1,0 +1,25 @@
+.cards {
+	margin-top: 25px;
+	gap: 2rem;
+}
+.status-card-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	border-radius: 15px;
+}
+
+.status-card-wrapper.bg-open {
+	background-color: #321fdb;
+}
+.status-card-wrapper.bg-progress {
+	background-color: #f9b115;
+}
+.status-card-wrapper.bg-closed {
+	background-color: #1bab6e;
+}
+.status-card-wrapper.bg-blocked {
+	background-color: #e55353;
+}
