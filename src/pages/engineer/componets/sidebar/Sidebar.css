@@ -1,0 +1,33 @@
+/* .sidebar-container {
+	background-color: rgb(153, 149, 149);
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3rem;
+	padding-top: 25px;
+}
+.sidebar-content {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.sidebar-content > p > a {
+	text-decoration: none;
+}
+.active {
+	background-color: black;
+	color: #fff;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+} */
+
+.iconsize {
+	font-size: 2.5rem;
+}
+.item-text {
+	color: #e4e6e9;
+}
+.sidebar-wrapper a {
+	text-decoration: none;
+}

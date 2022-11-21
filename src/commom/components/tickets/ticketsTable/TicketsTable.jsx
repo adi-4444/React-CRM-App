@@ -6,12 +6,12 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 const TicketsTable = (props) => {
 	const { ticketsData, setSelectedTicketDetails, showTicketModel } = props;
 	const coloumn = [
-		{ title: "ID", field: "id" },
-		{ title: "TITLE", field: "title" },
-		{ title: "DISCRIPTION", field: "description" },
-		{ title: "REPORTER", field: "reporter" },
-		{ title: "ASSIGNEE", field: "ticketPriority" },
-		{ title: "PRIORITY", field: "assignee" },
+		{ title: "ID", field: "id", align: "center" },
+		{ title: "TITLE", field: "title", align: "center" },
+		{ title: "DISCRIPTION", field: "description", align: "center" },
+		{ title: "REPORTER", field: "reporter", align: "center" },
+		{ title: "ASSIGNEE", field: "assignee", align: "center" },
+		{ title: "PRIORITY", field: "ticketPriority", align: "center" },
 		{
 			title: "STATUS",
 			field: "status",

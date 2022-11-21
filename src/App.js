@@ -11,9 +11,9 @@ import { USER_TYPES } from './commom/constants/userTypes'
 import Dashboard from './pages/admin/components/content/components/dashboard/Dashboard';
 import Tickets from './pages/admin/components/content/components/tickets/Tickets';
 import Users from './pages/admin/components/content/components/users/Users';
-
+import EngineerDashboard from './pages/engineer/componets/content/components/dashboard/EngineerDashboard';
+import EngineerTickets from './pages/engineer/componets/content/components/tickets/EngineerTickets';
 import '@coreui/coreui/dist/css/coreui.min.css'
-// import '@coreui/coreui/dist/js/coreui.min.js'
 import 'react-circular-progressbar/dist/styles.css';
 
 function App() {
@@ -22,23 +22,27 @@ function App() {
       <Routes>
         <Route path='/' element={<Authentication />} />
 
-        <Route element={<VerifyAuth allowedRoles={[USER_TYPES.CUSTOMER]} />} >
-          <Route path='/customer' element={<Customer />} />
-        </Route>
-
-        <Route element={<VerifyAuth allowedRoles={[USER_TYPES.ENGINEER]} />} >
-          <Route path='/engineer' element={<Engineer />} />
-        </Route>
-
         <Route element={<VerifyAuth allowedRoles={[USER_TYPES.ADMIN]} />} >
-
           <Route path='/admin' element={<Admin />}>
             <Route path='dashboard' element={<Dashboard />} />
             <Route path='tickets' element={<Tickets />} />
             <Route path='users' element={<Users />} />
           </Route>
-
         </Route>
+
+        <Route element={<VerifyAuth allowedRoles={[USER_TYPES.ENGINEER]} />} >
+          <Route path='/engineer' element={<Engineer />} >
+            <Route path='dashboard' element={<EngineerDashboard />} />
+            <Route path='tickets' element={<EngineerTickets />} />
+          </Route>
+        </Route>
+
+        <Route element={<VerifyAuth allowedRoles={[USER_TYPES.CUSTOMER]} />} >
+          <Route path='/customer' element={<Customer />} />
+        </Route>
+
+
+
         <Route path='/unauthorized' element={<Unauthorized />} />
         <Route path='*' element={<Notfound />} />
       </Routes>
