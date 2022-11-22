@@ -5,13 +5,15 @@ import {
 	updateTicket,
 } from "../../../../../../commom/apis/tickets";
 import TicketsTable from "../../../../../../commom/components/tickets/ticketsTable/TicketsTable";
-import TicketsModel from "../../../../../../commom/components/tickets/ticketsModel/TicketsModel";
+import TicketsModal from "../../../../../../commom/components/tickets/ticketsModal/TicketsModal";
+import Loader from "../../../../../../commom/components/loader/Loader";
 
 const Tickets = () => {
 	const [ticketsData, setTicketsData] = useState();
 	const [selectedTicketDetails, setSelectedTicketDetails] = useState({});
 	const [ticketModel, setTicketModel] = useState(false);
 	const [ticketModelError, setTicketModelError] = useState("");
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		getTickets();
 	}, []);
@@ -22,13 +24,16 @@ const Tickets = () => {
 					const { data, status } = result;
 					if (status === 200) {
 						setTicketsData(data);
+						setLoading(false);
 					}
 				})
 				.catch((err) => {
 					console.log(err);
+					setLoading(false);
 				});
 		} catch (err) {
 			console.log(err);
+			setLoading(false);
 		}
 	};
 	const hideTicketModel = () => {
@@ -71,37 +76,48 @@ const Tickets = () => {
 					if (status === 200) {
 						hideTicketModel();
 						getTickets();
+						setLoading(false);
 					}
 				})
 				.catch((err) => {
 					console.log(err.message);
+					setLoading(false);
 					setTicketModelError(
 						err?.response?.data?.message || err.message
 					);
 				});
 		} catch (err) {
 			console.log(err.message);
+			setLoading(false);
 			setTicketModelError(err?.response?.data?.message || err.message);
 		}
 	};
 	return (
-		<div>
-			<h4 className='tickets-heading'>You can make changes in Tickets</h4>
-			<TicketsTable
-				ticketsData={ticketsData}
-				setSelectedTicketDetails={setSelectedTicketDetails}
-				showTicketModel={showTicketModel}
-			/>
-			<TicketsModel
-				ticketModel={ticketModel}
-				hideTicketModel={hideTicketModel}
-				selectedTicketDetails={selectedTicketDetails}
-				selectedTicketChange={selectedTicketChange}
-				ticketUpdate={ticketUpdate}
-				ticketModelError={ticketModelError}
-				isUserTypeAdmin
-			/>
-		</div>
+		<>
+			{loading ? (
+				<Loader />
+			) : (
+				<div>
+					<h4 className='tickets-heading'>
+						You can make changes in Tickets
+					</h4>
+					<TicketsTable
+						ticketsData={ticketsData}
+						setSelectedTicketDetails={setSelectedTicketDetails}
+						showTicketModel={showTicketModel}
+					/>
+					<TicketsModal
+						ticketModel={ticketModel}
+						hideTicketModel={hideTicketModel}
+						selectedTicketDetails={selectedTicketDetails}
+						selectedTicketChange={selectedTicketChange}
+						ticketUpdate={ticketUpdate}
+						ticketModelError={ticketModelError}
+						isUserTypeAdmin
+					/>
+				</div>
+			)}
+		</>
 	);
 };
 

@@ -46,8 +46,6 @@ function App() {
           </Route>
         </Route>
 
-
-
         <Route path='/unauthorized' element={<Unauthorized />} />
         <Route path='*' element={<Notfound />} />
       </Routes>

@@ -10,7 +10,7 @@ import {
 } from "@coreui/react";
 import { TICKET_STATUS } from "../../../constants/ticketStatus";
 
-const TicketsModel = (props) => {
+const TicketsModal = (props) => {
 	const {
 		ticketModel,
 		hideTicketModel,
@@ -158,4 +158,4 @@ const TicketsModel = (props) => {
 	);
 };
 
-export default TicketsModel;
+export default TicketsModal;

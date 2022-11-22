@@ -7,7 +7,14 @@ export const fetchTickets = async () => {
    },
       { userId: localStorage.getItem("userId") });
 }
-
+export const createNewTicket = async (data) => {
+   return await axios.post(`${host}/tickets/`,
+      data, {
+      headers: {
+         "x-access-token": localStorage.getItem("token")
+      },
+   })
+}
 export const updateTicket = async (ticketData, ticketId) => {
    return await axios.put(`${host}/tickets/${ticketId}`,
       ticketData, {
@@ -16,13 +23,5 @@ export const updateTicket = async (ticketData, ticketId) => {
       },
    }, {
       ticketId,
-   })
-}
-export const createTicket = async (data) => {
-   return await axios.post(`${host}/tickets/`,
-      data, {
-      headers: {
-         "x-access-token": localStorage.getItem("token")
-      },
    })
 }

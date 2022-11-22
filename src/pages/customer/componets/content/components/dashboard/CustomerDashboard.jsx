@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-	createTicket,
+	createNewTicket,
 	fetchTickets,
 } from "../../../../../../commom/apis/tickets";
 import StatusCards from "../../../../../../commom/components/statuscards/StatusCards";
@@ -14,6 +14,7 @@ import {
 	CModalFooter,
 	CButton,
 } from "@coreui/react";
+import Loader from "../../../../../../commom/components/loader/Loader";
 
 const CustomerDashboard = () => {
 	const [ticketsData, setTicketsData] = useState();
@@ -23,9 +24,10 @@ const CustomerDashboard = () => {
 		closed: 0,
 		blocked: 0,
 	});
+
 	const [ticketModel, setTicketModel] = useState(false);
 	const [ticketModelError, setTicketModelError] = useState("");
-	const [ticketData, setTicketData] = useState({});
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		getTickets();
 	}, []);
@@ -46,87 +48,83 @@ const CustomerDashboard = () => {
 						setTicketsData(data);
 						const ticketsCount = calculateTickets(data);
 						setTicketsCount(ticketsCount);
+						setLoading(false);
 					}
 				})
 				.catch((err) => {
-					console.log(err);
+					const errMsg = err?.response?.data?.message || err?.message;
+					console.log(errMsg);
+					setLoading(false);
 				});
 		} catch (err) {
-			console.log(err);
+			const errMsg = err?.response?.data?.message || err?.message;
+			console.log(errMsg);
+			setLoading(false);
 		}
 	};
-	const newTicketChange = (e) => {
-		const data = {
-			title: e.target.value,
-			description: e.target.value,
-		};
-		setTicketData(data);
-	};
 
-	const createNewTicket = (e) => {
+	const createTicket = (e) => {
 		e.preventDefault();
 		const data = {
-			title: ticketData.title,
-			description: ticketData.description,
+			title: e.target.title.value,
+			description: e.target.description.value,
 		};
 		try {
-			createTicket(data)
+			createNewTicket(data)
 				.then((res) => {
 					const { status } = res;
-					if (status === 200) {
-						console.log(res);
-						setTicketModel(false);
+					if (status === 201) {
 						getTickets();
+						hideTicketModel();
 					}
 				})
 				.catch((err) => {
-					console.log(err.message);
-					setTicketModelError(
-						err?.response?.data?.message || err.message
-					);
+					const errMsg = err?.response?.data?.message || err?.message;
+					console.log(errMsg);
 				});
 		} catch (err) {
-			console.log(err.message);
-			setTicketModelError(err?.response?.data?.message || err.message);
+			const errMsg = err?.response?.data?.message || err?.message;
+			console.log(errMsg);
 		}
 	};
 	return (
-		<div>
-			<h1 className='dashboard-heading'>Dashboard</h1>
-			<StatusCards
-				ticketsCount={ticketsCount}
-				totalTickets={ticketsData}
-			/>
+		<>
+			{loading ? (
+				<Loader />
+			) : (
+				<div>
+					<h1 className='dashboard-heading'>Dashboard</h1>
+					<StatusCards
+						ticketsCount={ticketsCount}
+						totalTickets={ticketsData}
+					/>
 
-			<CButton
-				className='newbtn'
-				color='danger'
-				variant='outline'
-				onClick={showTicketModel}
-			>
-				To Create a ticket | Click Here
-			</CButton>
-			<CreateNewTicket
-				ticketModel={ticketModel}
-				hideTicketModel={hideTicketModel}
-				ticketModelError={ticketModelError}
-				newTicketChange={newTicketChange}
-				createNewTicket={createNewTicket}
-			/>
-		</div>
+					<CButton
+						className='newbtn'
+						color='danger'
+						variant='outline'
+						onClick={showTicketModel}
+					>
+						To Create a ticket | Click Here
+					</CButton>
+
+					<CreateNewTicket
+						ticketModel={ticketModel}
+						hideTicketModel={hideTicketModel}
+						ticketModelError={ticketModelError}
+						createTicket={createTicket}
+					/>
+				</div>
+			)}
+		</>
 	);
 };
 
 export default CustomerDashboard;
 
 export const CreateNewTicket = (props) => {
-	const {
-		ticketModel,
-		hideTicketModel,
-		ticketModelError,
-		newTicketChange,
-		createNewTicket,
-	} = props;
+	const { ticketModel, hideTicketModel, ticketModelError, createTicket } =
+		props;
 
 	return (
 		<div>
@@ -140,17 +138,15 @@ export const CreateNewTicket = (props) => {
 					<CModalHeader>
 						<CModalTitle>Create a New Ticket</CModalTitle>
 					</CModalHeader>
-					<form onSubmit={createNewTicket}>
+					<form onSubmit={createTicket}>
 						<CModalBody>
 							<div className='form-container my-3 mx-2'>
 								<label htmlFor='title' className='d-flex'>
 									<span>Title: </span>
 									<input
 										type='text'
-										id='title'
 										name='title'
 										className='form-control mx-2'
-										onChange={newTicketChange}
 									/>
 								</label>
 							</div>
@@ -161,7 +157,6 @@ export const CreateNewTicket = (props) => {
 										id='description'
 										name='description'
 										className='form-control mx-2'
-										onChange={newTicketChange}
 									/>
 								</label>
 							</div>
@@ -179,7 +174,7 @@ export const CreateNewTicket = (props) => {
 								Close
 							</CButton>
 							<CButton type='submit' color='info'>
-								Save changes
+								Create New Ticket
 							</CButton>
 						</CModalFooter>
 					</form>

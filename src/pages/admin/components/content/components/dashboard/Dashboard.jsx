@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchTickets } from "../../../../../../commom/apis/tickets";
+import Loader from "../../../../../../commom/components/loader/Loader";
 import StatusCards from "../../../../../../commom/components/statuscards/StatusCards";
 import { calculateTickets } from "../../../../../../commom/utils/calculateTickets";
 import { fetchUsers } from "../../../../apis/users";
@@ -21,6 +22,7 @@ const Dashboard = () => {
 		engineerCount: { Approved: 0, Pending: 0, Rejected: 0 },
 	});
 	const { adminCount, engineerCount, customerCount } = uesrsStatus;
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		getTickets();
@@ -35,13 +37,16 @@ const Dashboard = () => {
 					if (status === 200) {
 						const userCount = userStatusCount(data);
 						setUsersStatus(userCount);
+						setLoading(false);
 					}
 				})
 				.catch((err) => {
 					console.log(err);
+					setLoading(false);
 				});
 		} catch (error) {
 			console.log(error);
+			setLoading(false);
 		}
 	};
 	const getTickets = () => {
@@ -63,18 +68,24 @@ const Dashboard = () => {
 		}
 	};
 	return (
-		<div>
-			<h1 className='dashboard-heading'>Dashboard</h1>
-			<StatusCards
-				ticketsCount={ticketsCount}
-				totalTickets={ticketsData}
-			/>
-			<UserCards
-				adminCount={adminCount}
-				engineerCount={engineerCount}
-				customerCount={customerCount}
-			/>
-		</div>
+		<>
+			{loading ? (
+				<Loader />
+			) : (
+				<div>
+					<h1 className='dashboard-heading'>Dashboard</h1>
+					<StatusCards
+						ticketsCount={ticketsCount}
+						totalTickets={ticketsData}
+					/>
+					<UserCards
+						adminCount={adminCount}
+						engineerCount={engineerCount}
+						customerCount={customerCount}
+					/>
+				</div>
+			)}
+		</>
 	);
 };
 
