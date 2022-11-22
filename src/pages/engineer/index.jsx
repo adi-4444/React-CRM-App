@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import EngineerSidebar from "./componets/sidebar/EngineerSidebar";
+import Sidebar from "./componets/sidebar/Sidebar";
 import Content from "./componets/content/Content";
 import "./engineer.css";
 import { USER_TYPES } from "../../commom/constants/userTypes";
@@ -17,7 +17,7 @@ const Engineer = () => {
 	return (
 		<div>
 			<div className='admin-page'>
-				<EngineerSidebar />
+				<Sidebar />
 				<Content />
 			</div>
 		</div>

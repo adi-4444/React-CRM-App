@@ -15,6 +15,8 @@ import EngineerDashboard from './pages/engineer/componets/content/components/das
 import EngineerTickets from './pages/engineer/componets/content/components/tickets/EngineerTickets';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'react-circular-progressbar/dist/styles.css';
+import CustomerDashboard from './pages/customer/componets/content/components/dashboard/CustomerDashboard';
+import CustomerTickets from './pages/customer/componets/content/components/tickets/CustomeTickets';
 
 function App() {
   return (
@@ -38,7 +40,10 @@ function App() {
         </Route>
 
         <Route element={<VerifyAuth allowedRoles={[USER_TYPES.CUSTOMER]} />} >
-          <Route path='/customer' element={<Customer />} />
+          <Route path='/customer' element={<Customer />} >
+            <Route path='dashboard' element={<CustomerDashboard />} />
+            <Route path='tickets' element={<CustomerTickets />} />
+          </Route>
         </Route>
 
 

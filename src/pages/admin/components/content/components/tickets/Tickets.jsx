@@ -99,6 +99,7 @@ const Tickets = () => {
 				selectedTicketChange={selectedTicketChange}
 				ticketUpdate={ticketUpdate}
 				ticketModelError={ticketModelError}
+				isUserTypeAdmin
 			/>
 		</div>
 	);

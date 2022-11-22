@@ -12,7 +12,7 @@ import { MdDashboard } from "react-icons/md";
 import { ImTicket } from "react-icons/im";
 import { GrCloudlinux } from "react-icons/gr";
 import { FiLogOut } from "react-icons/fi";
-const EngineerSidebar = () => {
+const Sidebar = () => {
 	const navigate = useNavigate();
 	const logout = () => {
 		localStorage.clear();
@@ -33,7 +33,7 @@ const EngineerSidebar = () => {
 					</CSidebarBrand>
 					<CNavTitle>All Problems Solution</CNavTitle>
 					<CNavItem href='#'>
-						<NavLink to='/engineer/dashboard'>
+						<NavLink to='/customer/dashboard'>
 							<i>
 								<MdDashboard className='text-white iconsize' />
 							</i>
@@ -41,7 +41,7 @@ const EngineerSidebar = () => {
 						</NavLink>
 					</CNavItem>
 					<CNavItem href='#'>
-						<NavLink to='/engineer/tickets'>
+						<NavLink to='/customer/tickets'>
 							<i>
 								<ImTicket className='text-white iconsize' />
 							</i>
@@ -60,4 +60,4 @@ const EngineerSidebar = () => {
 	);
 };
 
-export default EngineerSidebar;
+export default Sidebar;

@@ -18,3 +18,11 @@ export const updateTicket = async (ticketData, ticketId) => {
       ticketId,
    })
 }
+export const createTicket = async (data) => {
+   return await axios.post(`${host}/tickets/`,
+      data, {
+      headers: {
+         "x-access-token": localStorage.getItem("token")
+      },
+   })
+}

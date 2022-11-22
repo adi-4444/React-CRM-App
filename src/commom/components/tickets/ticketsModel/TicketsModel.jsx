@@ -18,9 +18,12 @@ const TicketsModel = (props) => {
 		selectedTicketChange,
 		ticketUpdate,
 		ticketModelError,
+		isUserTypeAdmin = false,
+		isUserTypeEngineer = false,
 		isUserTypeCustomer = false,
 	} = props;
 	const {
+		id = "",
 		title = "",
 		status = "",
 		ticketPriority = "",
@@ -41,6 +44,7 @@ const TicketsModel = (props) => {
 					</CModalHeader>
 					<form onSubmit={ticketUpdate}>
 						<CModalBody>
+							<p className='m-2'>TicketId : {id}</p>
 							<div className='form-container my-3 mx-2'>
 								<label htmlFor='title' className='d-flex'>
 									<span>Title: </span>
@@ -51,6 +55,7 @@ const TicketsModel = (props) => {
 										className='form-control mx-2'
 										value={title}
 										onChange={selectedTicketChange}
+										disabled={!isUserTypeCustomer}
 									/>
 								</label>
 							</div>
@@ -82,21 +87,25 @@ const TicketsModel = (props) => {
 									/>
 								</label>
 							</div>
-
-							<div className='form-container my-3 mx-2'>
-								<label htmlFor='assignee' className='d-flex'>
-									<span>Assignee: </span>
-									<input
-										type='text'
-										id='assignee'
-										name='assignee'
-										className='form-control mx-2'
-										value={assignee}
-										onChange={selectedTicketChange}
-										disabled={isUserTypeCustomer}
-									/>
-								</label>
-							</div>
+							{!isUserTypeEngineer && (
+								<div className='form-container my-3 mx-2'>
+									<label
+										htmlFor='assignee'
+										className='d-flex'
+									>
+										<span>Assignee: </span>
+										<input
+											type='text'
+											id='assignee'
+											name='assignee'
+											className='form-control mx-2'
+											value={assignee}
+											onChange={selectedTicketChange}
+											disabled={!isUserTypeAdmin}
+										/>
+									</label>
+								</div>
+							)}
 
 							<div className='form-container my-3 mx-2'>
 								<label htmlFor='status' className='d-flex'>

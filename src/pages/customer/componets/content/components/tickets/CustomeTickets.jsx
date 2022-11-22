@@ -7,7 +7,7 @@ import {
 import TicketsTable from "../../../../../../commom/components/tickets/ticketsTable/TicketsTable";
 import TicketsModel from "../../../../../../commom/components/tickets/ticketsModel/TicketsModel";
 
-const EngineerTickets = () => {
+const CustomerTickets = () => {
 	const [ticketsData, setTicketsData] = useState();
 	const [selectedTicketDetails, setSelectedTicketDetails] = useState({});
 	const [ticketModel, setTicketModel] = useState(false);
@@ -99,10 +99,10 @@ const EngineerTickets = () => {
 				selectedTicketChange={selectedTicketChange}
 				ticketUpdate={ticketUpdate}
 				ticketModelError={ticketModelError}
-				isUserTypeEngineer
+				isUserTypeCustomer
 			/>
 		</div>
 	);
 };
 
-export default EngineerTickets;
+export default CustomerTickets;
