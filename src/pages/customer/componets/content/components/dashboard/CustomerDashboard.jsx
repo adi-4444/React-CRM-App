@@ -79,12 +79,12 @@ const CustomerDashboard = () => {
 					}
 				})
 				.catch((err) => {
-					const errMsg = err?.response?.data?.message || err?.message;
-					console.log(errMsg);
+					setTicketModelError(err);
+					console.log(err);
 				});
 		} catch (err) {
-			const errMsg = err?.response?.data?.message || err?.message;
-			console.log(errMsg);
+			setTicketModelError(err);
+			console.log(err);
 		}
 	};
 	return (
@@ -147,6 +147,7 @@ export const CreateNewTicket = (props) => {
 										type='text'
 										name='title'
 										className='form-control mx-2'
+										required
 									/>
 								</label>
 							</div>
@@ -157,6 +158,7 @@ export const CreateNewTicket = (props) => {
 										id='description'
 										name='description'
 										className='form-control mx-2'
+										required
 									/>
 								</label>
 							</div>

@@ -12,7 +12,7 @@ const Signup = ({ setAuth }) => {
 	const [password, setPassword] = useState("");
 	const [confirmpassword, setConfirmPassword] = useState("");
 	const [loading, setLoading] = useState(false);
-
+	const [errorMessage, setErrorMessage] = useState("");
 	const signupHandler = (e) => {
 		e.preventDefault();
 		const data = { name, email, userId, userType, password };
@@ -32,12 +32,12 @@ const Signup = ({ setAuth }) => {
 				})
 				.catch((err) => {
 					const errMsg = err?.response?.data?.message || err?.message;
-					console.log(errMsg);
+					setErrorMessage(errMsg);
 					setLoading(false);
 				});
 		} catch (err) {
 			const errMsg = err?.response?.data?.message || err?.message;
-			console.log(errMsg);
+			setErrorMessage(errMsg);
 			setLoading(false);
 		}
 	};
@@ -191,7 +191,11 @@ const Signup = ({ setAuth }) => {
 										""
 									)}
 								</div>
-
+								{errorMessage && (
+									<div className='text-danger mb-1'>
+										{errorMessage}
+									</div>
+								)}
 								<div className='signup_btn'>
 									<input
 										type='submit'

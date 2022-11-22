@@ -11,6 +11,7 @@ const Login = ({ setAuth }) => {
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const loginHandler = (e) => {
 		e.preventDefault();
@@ -39,13 +40,13 @@ const Login = ({ setAuth }) => {
 				.catch((err) => {
 					// if failure, i will show an error
 					const errMsg = err?.response?.data?.message || err?.message;
-					console.log(errMsg);
+					setErrorMessage(errMsg);
 					setLoading(false);
 				});
 		} catch (err) {
 			// if failure, i will show an error
 			const errMsg = err?.response?.data?.message || err?.message;
-			console.log(errMsg);
+			setErrorMessage(errMsg);
 			setLoading(false);
 		}
 	};
@@ -56,7 +57,7 @@ const Login = ({ setAuth }) => {
 				<Loader />
 			) : (
 				<div className='login_body'>
-					<h1>Welcome</h1>
+					<h1>Welcome To CRM App</h1>
 					<div className='login_wrapper'>
 						<div className='login_form_group'>
 							<h2>Login</h2>
@@ -95,7 +96,11 @@ const Login = ({ setAuth }) => {
 										Password *
 									</label>
 								</div>
-
+								{errorMessage && (
+									<div className='text-danger mb-1'>
+										{errorMessage}
+									</div>
+								)}
 								<div className='login_btn'>
 									<input type='submit' value='Login' />
 									<p>
