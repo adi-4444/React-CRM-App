@@ -167,7 +167,6 @@ const Signup = ({ setAuth }) => {
 												style={{
 													color: "#1bab6e",
 													fontSize: "12px",
-													margin: "-7.5px 0px",
 													padding: "0px",
 													marginTop: "-15px",
 												}}
@@ -179,7 +178,6 @@ const Signup = ({ setAuth }) => {
 												style={{
 													color: "red",
 													fontSize: "12px",
-													margin: "-7.5px 0px",
 													padding: "0px",
 													marginTop: "-15px",
 												}}
