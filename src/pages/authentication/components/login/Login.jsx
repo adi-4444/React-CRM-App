@@ -50,7 +50,18 @@ const Login = ({ setAuth }) => {
 			setLoading(false);
 		}
 	};
-
+	const loginAsAdmin = () => {
+		setUserId("adiadmin");
+		setPassword("123456");
+	};
+	const loginAsEngineer = () => {
+		setUserId("adiengineer");
+		setPassword("123456");
+	};
+	const loginAsCustomer = () => {
+		setUserId("adicustomer");
+		setPassword("123456");
+	};
 	return (
 		<>
 			{loading ? (
@@ -115,6 +126,25 @@ const Login = ({ setAuth }) => {
 									</p>
 								</div>
 							</form>
+						</div>
+					</div>
+					<div>
+						<br />
+						<br />
+						<br />
+						<h3>Want to see how it looks inside!</h3>
+						<center>
+							<h4>Login</h4>
+						</center>
+						<br />
+						<div className='demo-logins'>
+							<button onClick={loginAsAdmin}>AS ADMIN</button>
+							<button onClick={loginAsEngineer}>
+								AS Customer
+							</button>
+							<button onClick={loginAsCustomer}>
+								AS Engineer
+							</button>
 						</div>
 					</div>
 				</div>
